@@ -34,24 +34,24 @@ export default class TopNav extends Component {
 		return (
 			<div>
 	        <Navbar color="dark" inverse expand="md">
-	          <NavbarBrand ><Link to="/">Mobile Web App</Link></NavbarBrand>
+	          <NavbarBrand ><Link to="/" onClick={this.toggle}>Mobile Web App</Link></NavbarBrand>
 	          <NavbarToggler onClick={this.toggle} />
 	          <Collapse isOpen={this.state.isOpen} navbar>
 	            {/*<Nav className="ml-auto" navbar>*/}
 	            <Nav className="" navbar>
 	              <NavItem>
 	                {/*<NavLink href="home">Home</NavLink>*/}
-	                <NavLink><Link to="home">Home</Link></NavLink>
+	                <NavLink><Link to="home" onClick={this.toggle} >Home</Link></NavLink>
 	              </NavItem>
 	              <NavItem>
-	              <NavLink><Link to="phones">Phones</Link></NavLink>
+	              <NavLink><Link to="phones" onClick={this.toggle} >Phones</Link></NavLink>
 	              </NavItem>
 	              
 	              <NavItem>
-	              <NavLink><Link to="plans">Plans</Link></NavLink>
+	              <NavLink><Link to="plans" onClick={this.toggle} >Plans</Link></NavLink>
 	              </NavItem>
 	              <NavItem>
-	              <NavLink><Link to="cart">Cart</Link></NavLink>
+	              <NavLink><Link to="cart" onClick={this.toggle} >Cart</Link></NavLink>
 	              </NavItem>
 	              {/*<UncontrolledDropdown nav inNavbar>
 	                <DropdownToggle nav caret>
