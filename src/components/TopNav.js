@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import {
 	  Collapse,
@@ -33,22 +34,24 @@ export default class TopNav extends Component {
 		return (
 			<div>
 	        <Navbar color="dark" inverse expand="md">
-	          <NavbarBrand href="/">Mobile Web App</NavbarBrand>
+	          <NavbarBrand ><Link to="/">Mobile Web App</Link></NavbarBrand>
 	          <NavbarToggler onClick={this.toggle} />
 	          <Collapse isOpen={this.state.isOpen} navbar>
 	            {/*<Nav className="ml-auto" navbar>*/}
 	            <Nav className="" navbar>
 	              <NavItem>
-	                <NavLink href="/components/Home">Home</NavLink>
+	                {/*<NavLink href="home">Home</NavLink>*/}
+	                <NavLink><Link to="home">Home</Link></NavLink>
 	              </NavItem>
 	              <NavItem>
-	              <NavLink href="/components/Phones">Phones</NavLink>
+	              <NavLink><Link to="phones">Phones</Link></NavLink>
+	              </NavItem>
+	              
+	              <NavItem>
+	              <NavLink><Link to="plans">Plans</Link></NavLink>
 	              </NavItem>
 	              <NavItem>
-	              <NavLink href="/components/Plans">Plans</NavLink>
-	              </NavItem>
-	              <NavItem>
-	              <NavLink href="/components/Cart">Cart</NavLink>
+	              <NavLink><Link to="cart">Cart</Link></NavLink>
 	              </NavItem>
 	              {/*<UncontrolledDropdown nav inNavbar>
 	                <DropdownToggle nav caret>
