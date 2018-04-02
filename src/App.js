@@ -7,6 +7,7 @@ import Home from './components/Home';
 import Phones from './components/Phones';
 import Plans from './components/Plans';
 import Cart from './components/Cart';
+//import PhoneCarousel from './components/PhoneCarousel';
 
 
 import logo from './logo.svg';
