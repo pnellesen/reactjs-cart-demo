@@ -14,7 +14,18 @@ import {
 	  DropdownMenu,
 	  DropdownItem } from 'reactstrap';
 
+const navItems = [
+      {navTo:'home', navText:'Home'},
+      {navTo:'phones', navText:'Phones'},
+      {navTo:'plans', navText:'Plans'},
+      {navTo:'cart', navText:'Cart'},
+];
 
+const navItemLinks = navItems.map((item) => 
+	<NavItem>
+		<NavLink><Link to={item.navTo} onClick={this.toggle} >{item.navText}</Link></NavLink>
+	</NavItem>
+);
 
 export default class TopNav extends Component {
 	constructor(props) {
@@ -23,7 +34,7 @@ export default class TopNav extends Component {
 			this.state = {
 					isOpen: false
 			};
-		}
+		};
 	toggle() {
 	    this.setState({
 	      isOpen: !this.state.isOpen
@@ -31,6 +42,7 @@ export default class TopNav extends Component {
 	  }
 	
 	render () {
+		
 		return (
 			<div>
 	        <Navbar color="dark" inverse expand="md">
@@ -39,20 +51,7 @@ export default class TopNav extends Component {
 	          <Collapse isOpen={this.state.isOpen} navbar>
 	            {/*<Nav className="ml-auto" navbar>*/}
 	            <Nav className="" navbar>
-	              <NavItem>
-	                {/*<NavLink href="home">Home</NavLink>*/}
-	                <NavLink><Link to="home" onClick={this.toggle} >Home</Link></NavLink>
-	              </NavItem>
-	              <NavItem>
-	              <NavLink><Link to="phones" onClick={this.toggle} >Phones</Link></NavLink>
-	              </NavItem>
-	              
-	              <NavItem>
-	              <NavLink><Link to="plans" onClick={this.toggle} >Plans</Link></NavLink>
-	              </NavItem>
-	              <NavItem>
-	              <NavLink><Link to="cart" onClick={this.toggle} >Cart</Link></NavLink>
-	              </NavItem>
+	            {navItemLinks}
 	              {/*<UncontrolledDropdown nav inNavbar>
 	                <DropdownToggle nav caret>
 	                  Options
