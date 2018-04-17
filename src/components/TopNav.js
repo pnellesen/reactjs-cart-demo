@@ -21,9 +21,10 @@ const navItems = [
       {navTo:'cart', navText:'Cart'},
 ];
 
-const navItemLinks = navItems.map((item) => 
-	<NavItem>
-		<NavLink><Link to={item.navTo} onClick={this.toggle} >{item.navText}</Link></NavLink>
+const navItemLinks = navItems.map((item, i) => 
+	<NavItem key={i}>
+		{/*<NavLink><Link to={item.navTo} onClick={this.toggle} >{item.navText}</Link></NavLink>*/}
+		<NavLink><Link to={item.navTo}>{item.navText}</Link></NavLink>
 	</NavItem>
 );
 
