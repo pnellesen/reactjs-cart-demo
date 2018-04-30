@@ -10,7 +10,10 @@ it('renders without crashing', () => {
   ReactDOM.unmountComponentAtNode(div);
 });
 
-
 it('cart object exists', () => {
   expect(myApp.state.objCart).toBeDefined();
+});
+
+it('catalog object exists', () => {
+  expect(myApp.state.objCtlg).toBeDefined();
 })

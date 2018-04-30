@@ -1,0 +1,7 @@
+{"navItems": [
+    {"navTo":"/home", "navText":"Home"},
+    {"navTo":"/phones", "navText":"Phones"},
+    {"navTo":"/plans", "navText":"Plans"},
+    {"navTo":"/cart", "navText":"Cart"}
+    ]
+}

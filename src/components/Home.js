@@ -6,7 +6,7 @@ export default class Home extends Component {
 		return (
 				<div className="container">
 		      	<h1>Welcome to the demo cart</h1>
-		      	<PhoneCarousel />
+		      	<PhoneCarousel items={this.props.phoneList}/>
 		      	</div>
 		       
 		       

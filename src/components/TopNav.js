@@ -14,6 +14,20 @@ import {
 	  DropdownMenu,
 	  DropdownItem } from 'reactstrap';
 
+		
+/*const navItems = [
+      {navTo:'/home', navText:'Home'},
+      {navTo:'/phones', navText:'Phones'},
+      {navTo:'/plans', navText:'Plans'},
+      {navTo:'/cart', navText:'Cart'},
+];
+*/
+/*const navItemLinks = navItems.map((item, i) => 
+	<NavItem key={i}>
+		<NavLink tag={Link} to={item.navTo}>{item.navText}</NavLink>
+	</NavItem>
+);*/
+
 export default class TopNav extends Component {
 	constructor(props) {
 		super(props);

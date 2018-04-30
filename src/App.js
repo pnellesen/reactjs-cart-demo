@@ -9,6 +9,10 @@ import Plans from './components/Plans';
 import Cart from './components/Cart';
 //import PhoneCarousel from './components/PhoneCarousel';
 
+// Would expect the following to be pulled from an API or service rather
+// than from file system.
+import navItemsFile from './appData/navItems.json';
+import catalogItemsFile from './appData/catalogItems.json';
 
 import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -20,35 +24,26 @@ class App extends Component {
     super(props);
     this.state = {
       objCart:{},
+      objCtlg:catalogItemsFile.catalogItems,
       objPhones:{},
-      objPlans:{}
-      
+      objPlans:{},
     }
-    
-      
-    
+    this.navItemsData = navItemsFile.navItems;//This will likely not change often, if at all. No need to make it a state variable.
+    this.phoneList = [];
+    for (var i = 0; i< this.state.objCtlg.length; i++) {
+      if (this.state.objCtlg[i].type === 'phone') this.phoneList.push(this.state.objCtlg[i].phoneData);
+    }
   }
   
-   navItems = [
-    {navTo:'/home', navText:'Home'},
-    {navTo:'/phones', navText:'Phones'},
-    {navTo:'/plans', navText:'Plans'},
-    {navTo:'/cart', navText:'Cart'},
-  ];
-
-
   render() {
     
     return (
       <BrowserRouter>
       <div className="App">
-      <TopNav navItems={this.navItems}/>
-      
-      
-      
-      
-      <Route exact path="/" component={Home} />
-      <Route path="/home" component={Home} />
+      <TopNav navItems={this.navItemsData}/>
+  
+      <Route exact path="/" render={(props) => <Home {...props} phoneList={this.phoneList} />} />
+      <Route path="/home" render={(props) => <Home {...props} phoneList={this.phoneList} />}  />
       <Route path="/phones" component={Phones} />
       <Route path="/plans" component={Plans} />
       <Route path="/cart" component={Cart} />

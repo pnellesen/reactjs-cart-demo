@@ -9,24 +9,7 @@ import {
 } from 'reactstrap';
 
 
-//Add dummy unique url parameter to avoid duplicate key warning 	
-const items = [
-  {
-    src: 'images/phone.png?01',
-    altText: 'Slide 1',
-    caption: 'Slide 1'
-  },
-  {
-    src: 'images/phone.png?02',
-    altText: 'Slide 2',
-    caption: 'Slide 2'
-  },
-  {
-    src: 'images/phone.png?03',
-    altText: 'Slide 3',
-    caption: 'Slide 3'
-  }
-];
+//Add dummy unique url parameter to avoid duplicate key warning
 
 export default class PhoneCarousel extends Component {
   constructor(props) {
@@ -39,6 +22,7 @@ export default class PhoneCarousel extends Component {
     this.onExited = this.onExited.bind(this);
   }
 
+  
   onExiting() {
     this.animating = true;
   }
@@ -49,13 +33,13 @@ export default class PhoneCarousel extends Component {
 
   next() {
     if (this.animating) return;
-    const nextIndex = this.state.activeIndex === items.length - 1 ? 0 : this.state.activeIndex + 1;
+    const nextIndex = this.state.activeIndex === this.props.items.length - 1 ? 0 : this.state.activeIndex + 1;
     this.setState({ activeIndex: nextIndex });
   }
 
   previous() {
     if (this.animating) return;
-    const nextIndex = this.state.activeIndex === 0 ? items.length - 1 : this.state.activeIndex - 1;
+    const nextIndex = this.state.activeIndex === 0 ? this.props.items.length - 1 : this.state.activeIndex - 1;
     this.setState({ activeIndex: nextIndex });
   }
 
@@ -67,7 +51,7 @@ export default class PhoneCarousel extends Component {
   render() {
     const { activeIndex } = this.state;
 
-    const slides = items.map((item) => {
+    const slides = this.props.items.map((item) => {
       return (
         <CarouselItem
           onExiting={this.onExiting}
@@ -86,7 +70,7 @@ export default class PhoneCarousel extends Component {
         next={this.next}
         previous={this.previous}
       >
-        <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+        <CarouselIndicators items={this.props.items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
         {slides}
         <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
         <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />

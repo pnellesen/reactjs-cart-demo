@@ -1,0 +1,31 @@
+{
+    "catalogItems": [
+        {
+            "id":"phone1",
+            "type":"phone",
+            "phoneData": {
+                "src": "images/phone.png?01",
+                "altText": "Slide 1",
+                "caption": "Slide 1"
+            }
+        },
+        {
+            "id":"phone2",
+            "type":"phone",
+            "phoneData": {
+                "src": "images/phone.png?02",
+                "altText": "Slide 2",
+                "caption": "Slide 2"
+            }
+          },
+          {
+            "id":"phone1",
+            "type":"phone",
+            "phoneData": {
+                "src": "images/phone.png?03",
+                "altText": "Slide 3",
+                "caption": "Slide 3"
+            }
+          }
+    ]
+}
