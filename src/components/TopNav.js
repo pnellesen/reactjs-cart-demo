@@ -15,16 +15,15 @@ import {
 	  DropdownItem } from 'reactstrap';
 
 const navItems = [
-      {navTo:'home', navText:'Home'},
-      {navTo:'phones', navText:'Phones'},
-      {navTo:'plans', navText:'Plans'},
-      {navTo:'cart', navText:'Cart'},
+      {navTo:'/home', navText:'Home'},
+      {navTo:'/phones', navText:'Phones'},
+      {navTo:'/plans', navText:'Plans'},
+      {navTo:'/cart', navText:'Cart'},
 ];
 
 const navItemLinks = navItems.map((item, i) => 
 	<NavItem key={i}>
-		{/*<NavLink><Link to={item.navTo} onClick={this.toggle} >{item.navText}</Link></NavLink>*/}
-		<NavLink><Link to={item.navTo}>{item.navText}</Link></NavLink>
+		<NavLink tag={Link} to={item.navTo}>{item.navText}</NavLink>
 	</NavItem>
 );
 
@@ -46,64 +45,20 @@ export default class TopNav extends Component {
 		
 		return (
 			<div>
-	        <Navbar color="dark" inverse expand="md">
-	          <NavbarBrand ><Link to="/" onClick={this.toggle}>Mobile Web App</Link></NavbarBrand>
+	        <Navbar color="dark" dark expand="md">
+						<NavbarBrand tag={Link} to="/" onClick={this.toggle}>Mobile Web App</NavbarBrand>
 	          <NavbarToggler onClick={this.toggle} />
 	          <Collapse isOpen={this.state.isOpen} navbar>
-	            {/*<Nav className="ml-auto" navbar>*/}
-	            <Nav className="" navbar>
-	            {navItemLinks}
-	              {/*<UncontrolledDropdown nav inNavbar>
-	                <DropdownToggle nav caret>
-	                  Options
-	                </DropdownToggle>
-	                <DropdownMenu right>
-	                  <DropdownItem>
-	                    Option 1
-	                  </DropdownItem>
-	                  <DropdownItem>
-	                    Option 2
-	                  </DropdownItem>
-	                  <DropdownItem divider />
-	                  <DropdownItem>
-	                    Reset
-	                  </DropdownItem>
-	                </DropdownMenu>
-	              </UncontrolledDropdown>*/}
-	            </Nav>
+	            <Nav className="" navbar>{
+								navItems.map((item, i) => 
+									<NavItem key={i}>
+										<NavLink tag={Link} to={item.navTo} onClick={this.toggle}>{item.navText}</NavLink>
+									</NavItem>
+								)
+							}</Nav>
 	          </Collapse>
 	        </Navbar>
 	      </div>
 		)
 	}
-	
-	/* OLD
-	render () {
-		return (
-			<nav className="navbar navbar-inverse navbar-fixed-top">
-		      <div className="container">
-		        <div className="navbar-header">
-		          <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-		            <span className="sr-only">Toggle navigation</span>
-		            <span className="icon-bar"></span>
-		            <span className="icon-bar"></span>
-		            <span className="icon-bar"></span>
-		          </button>
-		          <a className="navbar-brand" href="#" data-toggle="collapse" data-target=".navbar-collapse.in">Mobile Web App</a>
-		        </div>
-		        
-		        <div id="navbar" className="collapse navbar-collapse">
-		          <ul className="nav navbar-nav">
-		            <li ><a href="#!" active-link data-toggle="collapse" data-target=".navbar-collapse.in">Home</a></li>
-		            <li><a href="#!phones" active-link data-toggle="collapse" data-target=".navbar-collapse.in">Phones</a></li>
-		            <li><a href="#!plans" active-link data-toggle="collapse" data-target=".navbar-collapse.in">Plans</a></li>
-		            <li ><a href="#!cart" active-link data-toggle="collapse" data-target=".navbar-collapse.in">Cart</a></li>
-		          </ul>
-		        </div>
-		      </div>
-		    </nav>
-		 );
-	}
-	 END OLD */
-	
 }
