@@ -14,19 +14,6 @@ import {
 	  DropdownMenu,
 	  DropdownItem } from 'reactstrap';
 
-const navItems = [
-      {navTo:'/home', navText:'Home'},
-      {navTo:'/phones', navText:'Phones'},
-      {navTo:'/plans', navText:'Plans'},
-      {navTo:'/cart', navText:'Cart'},
-];
-
-const navItemLinks = navItems.map((item, i) => 
-	<NavItem key={i}>
-		<NavLink tag={Link} to={item.navTo}>{item.navText}</NavLink>
-	</NavItem>
-);
-
 export default class TopNav extends Component {
 	constructor(props) {
 		super(props);
@@ -34,7 +21,9 @@ export default class TopNav extends Component {
 			this.state = {
 					isOpen: false
 			};
+			console.log("Props: %O", props );
 		};
+
 	toggle() {
 	    this.setState({
 	      isOpen: !this.state.isOpen
@@ -50,7 +39,7 @@ export default class TopNav extends Component {
 	          <NavbarToggler onClick={this.toggle} />
 	          <Collapse isOpen={this.state.isOpen} navbar>
 	            <Nav className="" navbar>{
-								navItems.map((item, i) => 
+								this.props.navItems.map((item, i) => 
 									<NavItem key={i}>
 										<NavLink tag={Link} to={item.navTo} onClick={this.toggle}>{item.navText}</NavLink>
 									</NavItem>

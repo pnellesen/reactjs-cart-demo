@@ -25,11 +25,16 @@ class App extends Component {
       
     }
     
-  
+      
     
   }
   
-  
+   navItems = [
+    {navTo:'/home', navText:'Home'},
+    {navTo:'/phones', navText:'Phones'},
+    {navTo:'/plans', navText:'Plans'},
+    {navTo:'/cart', navText:'Cart'},
+  ];
 
 
   render() {
@@ -37,7 +42,7 @@ class App extends Component {
     return (
       <BrowserRouter>
       <div className="App">
-      <TopNav />
+      <TopNav navItems={this.navItems}/>
       
       
       
