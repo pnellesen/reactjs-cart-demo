@@ -78,6 +78,3 @@ export default class PhoneCarousel extends Component {
     );
   }
 }
-
-
-{/*export default PhoneCarousel;*/}

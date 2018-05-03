@@ -23,18 +23,48 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      objCart:{},
-      objCtlg:catalogItemsFile.catalogItems,
-      objPhones:{},
-      objPlans:{},
+      objCart:[],
+      objCtlg:this.getCatalog(),
+      objPhones:[],
+      objPlans:[],
     }
+    this.getItems = this.getItems.bind(this);
     this.navItemsData = navItemsFile.navItems;//This will likely not change often, if at all. No need to make it a state variable.
-    this.phoneList = [];
-    for (var i = 0; i< this.state.objCtlg.length; i++) {
-      if (this.state.objCtlg[i].type === 'phone') this.phoneList.push(this.state.objCtlg[i].phoneData);
-    }
+  }
+
+  componentWillMount() {
+    
   }
   
+  componentDidMount() {
+    this.setState({
+      objPhones:this.getItems('phone'),
+      objPlans: this.getItems('plan')
+    })
+    
+    console.log("Phones: %O", this.state.objPhones);
+  }
+
+  getCatalog() {
+    // This could be any method of data retrieval. Using an import from file system, but could easily change to an API call if needed.
+    return catalogItemsFile.catalogItems;
+  }
+
+
+  
+  getItems(type) {
+    var itemList = [];
+    var catalog = this.state.objCtlg;
+    for (var i = 0; i< catalog.length; i++) {
+      if (catalog[i].type === type) itemList.push(catalog[i].itemData);
+    }
+    return itemList;
+  }
+
+  getPlans() {
+
+  }
+
   render() {
     
     return (
@@ -42,8 +72,8 @@ class App extends Component {
       <div className="App">
       <TopNav navItems={this.navItemsData}/>
   
-      <Route exact path="/" render={(props) => <Home {...props} phoneList={this.phoneList} />} />
-      <Route path="/home" render={(props) => <Home {...props} phoneList={this.phoneList} />}  />
+      <Route exact path="/" render={(props) => <Home {...props} phoneList={this.state.objPhones} />} />
+      <Route path="/home" render={(props) => <Home {...props} phoneList={this.state.objPhones} />}  />
       <Route path="/phones" component={Phones} />
       <Route path="/plans" component={Plans} />
       <Route path="/cart" component={Cart} />
