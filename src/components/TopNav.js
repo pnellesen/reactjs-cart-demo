@@ -33,11 +33,13 @@ export default class TopNav extends Component {
 		super(props);
 		this.toggle = this.toggle.bind(this);
                 this.toggleCollapse = this.toggleCollapse.bind(this);
-			this.state = {
-					isOpen: false
-			};
-			console.log("Props: %O", props );
-		};
+                this.togglerRef = null;
+                this.state = {
+                    isOpen: false
+                };
+		console.log("Props: %O", props );
+                
+	};
 
 	toggle() {
 	    this.setState({
@@ -45,8 +47,9 @@ export default class TopNav extends Component {
 	    });
 	  }
           
-        toggleCollapse() {// Use this on links - will only cause rerender if in small viewports. If in large viewport, isOpen will always be false
-            if (this.state.isOpen) {
+        toggleCollapse() {// Use this on links - will only cause rerender if in small viewports and toggler is open. If in large viewport, toggler display will be "none"
+            var togglerDisplay = window.getComputedStyle(this.togglerRef.firstElementChild).getPropertyValue("display");
+            if (this.state.isOpen && togglerDisplay != 'none') {
                 this.setState({isOpen: !this.state.isOpen});
             }
         }
@@ -57,7 +60,7 @@ export default class TopNav extends Component {
 			<div>
 	        <Navbar color="dark" dark expand="md">
                   <NavbarBrand tag={Link} to="/" onClick={this.toggleCollapse}>Mobile Web App</NavbarBrand>
-	          <NavbarToggler onClick={this.toggle} />
+                  <div ref={(togglerNode) => {this.togglerRef = togglerNode}}><NavbarToggler onClick={this.toggle} /></div>
 	          <Collapse isOpen={this.state.isOpen} navbar>
 	            <Nav className="" navbar>{
                             this.props.navItems.map((item, i) => 
