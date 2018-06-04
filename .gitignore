@@ -22,3 +22,4 @@ yarn-error.log*
 /nohup.out
 /.project
 .vscode/settings.json
+/nbproject
